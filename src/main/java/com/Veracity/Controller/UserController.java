@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,10 @@ public class UserController {
 	public Optional<User> userById(@PathVariable int Id) throws Exception {
 		return userService.userById(Id);
 				
+	}
+	@DeleteMapping("/deleteUserById/{Id}")
+	public Optional<User> deleteUserById(@PathVariable int Id) throws Exception {
+		return userService.deleteUserById(Id);
 	}
 
 }

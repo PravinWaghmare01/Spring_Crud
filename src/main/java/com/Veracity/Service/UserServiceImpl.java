@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Veracity.Entities.User;
+import com.Veracity.Repositories.CrudRepository;
 import com.Veracity.Repositories.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CrudRepository crudRepository;
 	@Override
 	public User CreateUser(User user) {
 		return userRepository.save(user);
@@ -28,6 +32,15 @@ public class UserServiceImpl implements UserService {
 		
 		return userRepository.findById(Id);
 	}
+	@Override
+	public Optional<User> deleteUserById(int Id) throws Exception {
+		Optional<User> user = crudRepository.findById(Id);
+		crudRepository.deleteById(Id);
+		return user;
+	}
+	
+	
+	
 	
 	
 	

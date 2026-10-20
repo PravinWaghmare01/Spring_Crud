@@ -12,6 +12,8 @@ public interface UserService  {
 	public List<User> getAllUser();
 	
 	public Optional<User> userById(int Id) throws Exception;
+
+	public  Optional<User> deleteUserById(int Id) throws Exception; 
 	
 	
 }
